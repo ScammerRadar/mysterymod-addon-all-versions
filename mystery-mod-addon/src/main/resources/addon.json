@@ -1,0 +1,7 @@
+{
+  "name" : "ScammerRadar-Extension",
+  "version" : "1.0.0",
+  "description" : "Fügt zwei neue Befehle hinzu: /trust und /scammer",
+  "authors"  : ["kyleonaut"],
+  "mainClass" : "de.kyleonaut.scammerradar_extension.ScammerRadarExtension"
+}
