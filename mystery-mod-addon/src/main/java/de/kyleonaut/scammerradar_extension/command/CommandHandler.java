@@ -7,6 +7,7 @@ import de.kyleonaut.scammerradar_extension.command.trust.TrustCommand;
 import de.kyleonaut.scammerradar_extension.repository.MojangRepository;
 import net.mysterymod.api.event.EventHandler;
 import net.mysterymod.api.event.message.MessageSendEvent;
+import net.mysterymod.mod.MysteryMod;
 import net.mysterymod.mod.profile.internal.trust.ScammerRepository;
 import net.mysterymod.mod.profile.internal.trust.TrustedRepository;
 
@@ -33,6 +34,10 @@ public class CommandHandler {
 
   @EventHandler
   public void onSend(MessageSendEvent event) {
+    if (event.getMessage().equalsIgnoreCase("#author")) {
+      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aAuthor: kyleonaut");
+      event.setCancelled(true);
+    }
     if (!event.getMessage().startsWith(this.prefix)) {
       return;
     }
