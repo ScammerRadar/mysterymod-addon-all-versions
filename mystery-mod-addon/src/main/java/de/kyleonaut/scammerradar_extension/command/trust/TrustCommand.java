@@ -55,7 +55,7 @@ public class TrustCommand implements ICommand {
         }
         final MojangUser user = MojangUser.format(mojangUser);
         if (trustedRepository.isTrusted(user.getUUID())) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §e" + user.getName() + "§7 ist in Trusted Liste eingetragen.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §e" + user.getName() + "§7 ist in deiner Trusted Liste eingetragen.");
           return;
         }
         MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §e" + user.getName() + "§7 ist nicht in deiner Trusted Liste eingetragen");
