@@ -23,7 +23,7 @@ public class ScammerCommand implements ICommand {
   public void execute(String message) {
     final String[] args = message.split(" ");
     if (args.length != 3) {
-      MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/scammer <add | remove> <name>§7.");
+      MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/scammer <add | remove | check> <name>§7.");
       return;
     }
     final String targetName = args[2];
@@ -36,9 +36,7 @@ public class ScammerCommand implements ICommand {
         scammerRepository.add(MojangUser.format(user).getUUID(), user.getName(), " ", new byte[]{});
         MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde zu deiner Scammer Liste hinzugefügt.");
       });
-      return;
-    }
-    if (args[1].equalsIgnoreCase("remove")) {
+    } else if (args[1].equalsIgnoreCase("remove")) {
       mojangRepository.getMojangUser(targetName).whenComplete((user, throwable) -> {
         if (user == null) {
           MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + targetName + "§7 konnte nicht gefunden werden.");
@@ -47,8 +45,21 @@ public class ScammerCommand implements ICommand {
         scammerRepository.delete(user.getName());
         MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde von deiner Scammer Liste entfernt.");
       });
-      return;
+    } else if (args[1].equalsIgnoreCase("check")) {
+      mojangRepository.getMojangUser(targetName).whenComplete((mojangUser, throwable) -> {
+        if (mojangUser == null) {
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + targetName + "§7 konnte nicht gefunden werden.");
+          return;
+        }
+        final MojangUser user = MojangUser.format(mojangUser);
+        if (scammerRepository.isScammer(user.getUUID())) {
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §e" + user.getName() + "§7 ist in deiner Scammer Liste eingetragen");
+          return;
+        }
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §e" + user.getName() + "§7 ist nicht in deiner Scammer Liste eingetragen.");
+      });
+    } else {
+      MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/scammer <add | remove | check> <name>§7.");
     }
-    MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/scammer <add | remove> <name>§7.");
   }
 }
