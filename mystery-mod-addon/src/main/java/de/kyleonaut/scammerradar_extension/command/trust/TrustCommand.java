@@ -36,7 +36,7 @@ public class TrustCommand implements ICommand {
           return;
         }
         trustedRepository.add(MojangUser.format(user).getUUID(), user.getName(), " ", new byte[]{});
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde zu deiner Trusted Liste hinzugefügt.");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde zu deiner Trusted-Liste hinzugefügt.");
       });
     } else if (args[1].equalsIgnoreCase("remove")) {
       mojangRepository.getMojangUser(targetName).whenComplete((user, throwable) -> {
@@ -45,7 +45,7 @@ public class TrustCommand implements ICommand {
           return;
         }
         trustedRepository.delete(user.getName());
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde von deiner Trusted Liste entfernt.");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde von deiner Trusted-Liste entfernt.");
       });
     } else if (args[1].equalsIgnoreCase("check")) {
       mojangRepository.getMojangUser(targetName).whenComplete((mojangUser, throwable) -> {
@@ -55,10 +55,10 @@ public class TrustCommand implements ICommand {
         }
         final MojangUser user = MojangUser.format(mojangUser);
         if (trustedRepository.isTrusted(user.getUUID())) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner Trusted Liste eingetragen.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner Trusted-Liste eingetragen.");
           return;
         }
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist nicht in deiner Trusted Liste eingetragen");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist nicht in deiner Trusted-Liste eingetragen");
       });
     } else {
       MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/trust <add | remove | check> <name>§7.");

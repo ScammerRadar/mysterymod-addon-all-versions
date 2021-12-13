@@ -15,9 +15,9 @@ public class ServerJoinListener {
   @EventHandler
   public void onChatReceive(MessageReceiveEvent event) {
     if (event.getComponent().getUnformatted().equals("[GrieferGames] Deine Daten wurden vollständig heruntergeladen.")) {
-      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aScammer Liste wird analysiert.");
-      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aTrusted Liste wird analysiert.");
-      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aScammer- und Trusted Liste wurde analysiert.");
+      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aScammer-Liste wird analysiert.");
+      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aTrusted-Liste wird analysiert.");
+      MysteryMod.getInstance().getMinecraft().addChatMessage("§8[§6ScammerRadar Extension§8] §aScammer- und Trusted-Liste wurde analysiert.");
     }
   }
 }
