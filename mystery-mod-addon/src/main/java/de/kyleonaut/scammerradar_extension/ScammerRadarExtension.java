@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import de.kyleonaut.scammerradar_extension.command.CommandHandler;
-import de.kyleonaut.scammerradar_extension.listener.ServerJoinListener;
 import lombok.RequiredArgsConstructor;
 import net.mysterymod.api.listener.ListenerChannel;
 import net.mysterymod.mod.addon.Addon;
@@ -23,6 +22,5 @@ public class ScammerRadarExtension extends Addon {
   public void onEnable() {
     logger.log(Level.INFO, "Starting ScammerRadarExtension Addon");
     listenerChannel.registerListener(injector.getInstance(CommandHandler.class));
-    listenerChannel.registerListener(injector.getInstance(ServerJoinListener.class));
   }
 }
