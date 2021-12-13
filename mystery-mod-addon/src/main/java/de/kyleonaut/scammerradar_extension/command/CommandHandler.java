@@ -45,7 +45,7 @@ public class CommandHandler {
     final String key = command.split(" ")[0];
     if (this.commandMap.containsKey(key.toLowerCase())) {
       event.setCancelled(true);
-      this.commandMap.get(key).execute(event.getMessage());
+      this.commandMap.get(key.toLowerCase()).execute(event.getMessage());
     }
   }
 }
