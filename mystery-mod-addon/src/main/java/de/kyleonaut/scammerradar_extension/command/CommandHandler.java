@@ -43,7 +43,7 @@ public class CommandHandler {
     }
     final String command = event.getMessage().split("/")[1];
     final String key = command.split(" ")[0];
-    if (this.commandMap.containsKey(key)) {
+    if (this.commandMap.containsKey(key.toLowerCase())) {
       event.setCancelled(true);
       this.commandMap.get(key).execute(event.getMessage());
     }
