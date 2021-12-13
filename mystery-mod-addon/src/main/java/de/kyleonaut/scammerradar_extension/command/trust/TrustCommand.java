@@ -32,33 +32,33 @@ public class TrustCommand implements ICommand {
     if (args[1].equalsIgnoreCase("add")) {
       mojangRepository.getMojangUser(targetName).whenComplete((user, throwable) -> {
         if (user == null) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + targetName + "§7 konnte nicht gefunden werden.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §cEs konnte kein Spieler unter diesem Namen gefunden werden.");
           return;
         }
         trustedRepository.add(MojangUser.format(user).getUUID(), user.getName(), " ", new byte[]{});
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde zu deiner Trusted-Liste hinzugefügt.");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 wurde zu deiner §eTrusted-Liste §ahinzugefügt.");
       });
     } else if (args[1].equalsIgnoreCase("remove")) {
       mojangRepository.getMojangUser(targetName).whenComplete((user, throwable) -> {
         if (user == null) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + targetName + "§7 konnte nicht gefunden werden.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §cEs konnte kein Spieler unter diesem Namen gefunden werden.");
           return;
         }
         trustedRepository.delete(user.getName());
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §aDer Spieler §2" + user.getName() + "§a wurde von deiner Trusted-Liste entfernt.");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 wurde von deiner §eTrusted-Liste §centfernt.");
       });
     } else if (args[1].equalsIgnoreCase("check")) {
       mojangRepository.getMojangUser(targetName).whenComplete((mojangUser, throwable) -> {
         if (mojangUser == null) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + targetName + "§7 konnte nicht gefunden werden.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §cEs konnte kein Spieler unter diesem Namen gefunden werden.");
           return;
         }
         final MojangUser user = MojangUser.format(mojangUser);
         if (trustedRepository.isTrusted(user.getUUID())) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner Trusted-Liste eingetragen.");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner §eTrusted-Liste §aeingetragen.");
           return;
         }
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist nicht in deiner Trusted-Liste eingetragen");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist §cnicht§7 in deiner §eTrusted-Liste§7 §ceingetragen");
       });
     } else {
       MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/trust <add | remove | check> <name>§7.");
