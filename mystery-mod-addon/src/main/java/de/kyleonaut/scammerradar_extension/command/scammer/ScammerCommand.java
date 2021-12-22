@@ -17,7 +17,7 @@ import net.mysterymod.mod.profile.internal.trust.ScammerRepository;
 public class ScammerCommand implements ICommand {
   private final MojangRepository mojangRepository;
   private final ScammerRepository scammerRepository;
-  private final String PREFIX = "§8[§6ScammerRadar Extension§8]";
+  private final String PREFIX = "§8[§9ScammerRadar §3Extension§8]";
 
   @Override
   public void execute(String message) {

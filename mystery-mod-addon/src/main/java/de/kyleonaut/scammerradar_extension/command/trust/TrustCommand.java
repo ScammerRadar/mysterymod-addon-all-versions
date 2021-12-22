@@ -19,7 +19,7 @@ import net.mysterymod.mod.profile.internal.trust.TrustedRepository;
 public class TrustCommand implements ICommand {
   private final MojangRepository mojangRepository;
   private final TrustedRepository trustedRepository;
-  private final String PREFIX = "§8[§6ScammerRadar Extension§8]";
+  private final String PREFIX = "§8[§9ScammerRadar §3Extension§8]";
 
   @Override
   public void execute(String message) {
