@@ -58,7 +58,7 @@ public class TrustCommand implements ICommand {
           MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner §eTrusted-Liste §aeingetragen.");
           return;
         }
-        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist §cnicht§7 in deiner §eTrusted-Liste§7 §ceingetragen");
+        MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist §cnicht§7 in deiner §eTrusted-Liste§7 §ceingetragen.");
       });
     } else {
       MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Bitte benutze §e/trust <add | remove | check> <name>§7.");

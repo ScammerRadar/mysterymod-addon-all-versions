@@ -53,7 +53,7 @@ public class ScammerCommand implements ICommand {
         }
         final MojangUser user = MojangUser.format(mojangUser);
         if (scammerRepository.isScammer(user.getUUID())) {
-          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner §eScammer-Liste §aeingetragen");
+          MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist in deiner §eScammer-Liste §aeingetragen.");
           return;
         }
         MysteryMod.getInstance().getMinecraft().addChatMessage(PREFIX + " §7Der Spieler §e" + user.getName() + "§7 ist §cnicht§7 in deiner §eScammer-Liste §ceingetragen.");
